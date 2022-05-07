@@ -1,4 +1,4 @@
-# FEM - Social Media Dashboard with theme switcher
+# FEM - Coding Bootcamp Testimonials Slider
 
 ### Links
 
