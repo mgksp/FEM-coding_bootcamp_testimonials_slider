@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 import patternBg from "../images/pattern-bg.svg";
@@ -8,7 +9,6 @@ import iconRight from "../images/icon-next.svg";
 
 import john from "../images/image-john.jpg";
 import tanya from "../images/image-tanya.jpg";
-import { useState } from "react";
 
 interface Testimonial {
   img: string;
@@ -62,18 +62,30 @@ export default function Slider() {
         <img className="absolute inset-0" src={patternBg} alt="" />
         <div className="relative">
           <motion.img
+            initial={{
+              opacity: 0.1,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+            }}
             className="rounded shadow-2xl"
             src={testimonials[slideIdx].img}
             alt=""
           />
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-20 shadow-lg flex rounded-full lg:left-1/4 overflow-hidden">
             <button
+              aria-label="left"
               className="bg-white hover:bg-gray-200 outline-none focus:bg-gray-200 active:bg-gray-300 w-1/2 grid place-content-center p-3"
               onClick={slideLeft}
             >
               <img src={iconLeft} alt="" />
             </button>
             <button
+              aria-label="right"
               className="bg-white hover:bg-gray-200 outline-none focus:bg-gray-200 active:bg-gray-300 w-1/2 grid place-content-center p-3"
               onClick={slideRight}
             >
@@ -82,15 +94,19 @@ export default function Slider() {
           </div>
         </div>
       </div>
-      <div className="relative py-6 h-fit self-center row-start-1 text-center lg:text-left lg:pl-24">
+      <motion.div
+        animate={{ x: 0 }}
+        initial={{ x: "-100vw" }}
+        className="relative py-6 h-fit self-center row-start-1 text-center lg:text-left lg:pl-24"
+      >
         <img
           className="absolute top-0 left-1/2 -translate-x-1/2 w-14 lg:w-auto"
           src={patternQuote}
           alt=""
         />
-        <motion.blockquote className="text-lg font-light w-[30ch] mx-auto lg:text-32 lg:leading-[2.75rem] lg:w-[35ch]">
+        <blockquote className="text-lg font-light w-[30ch] mx-auto lg:text-32 lg:leading-[2.75rem] lg:w-[35ch]">
           {testimonials[slideIdx].quote}
-        </motion.blockquote>
+        </blockquote>
         <div className="mt-3 lg:mt-10 lg:flex gap-4">
           <h1 className="text-15 font-bold lg:text-xl">
             {testimonials[slideIdx].name}
@@ -99,7 +115,7 @@ export default function Slider() {
             {testimonials[slideIdx].profession}
           </p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
