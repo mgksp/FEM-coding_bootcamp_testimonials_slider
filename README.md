@@ -3,7 +3,7 @@
 ### Links
 
 [Challenge from FrontendMentor](https://www.frontendmentor.io/challenges/coding-bootcamp-testimonials-slider-4FNyLA8JL)\
-[Live site here]()
+[Live site here](https://mgksp-fem-coding-bootcamp-testimonials.netlify.app/)
 
 ### Built with
 
